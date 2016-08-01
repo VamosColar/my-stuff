@@ -1,28 +1,56 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ .'/../vendor/autoload.php';
+
+use Saxulum\DoctrineMongoDbOdm\Provider\DoctrineMongoDbOdmProvider;
+use Saxulum\DoctrineMongoDb\Provider\DoctrineMongoDbProvider;
+
+use Silex\Application;
 
 $app = new Silex\Application();
 
 $app['debug'] = true;
 
-$app->register(new \Lalbert\Silex\Provider\MongoDBServiceProvider(), [
-    'mongodb.config' => [
-        'server' => 'mongodb://homestead:secret@localhost:27017',
-        'options' => [],
-        'driverOptions' => [],
-    ]
-]);
+$app->register(new DoctrineMongoDbProvider, array(
+    "mongodb.options" => array(
+        "server" => "mongodb://localhost:27017",
+        "options" => array(
+            "username" => "homestead",
+            "password" => "secret",
+            "db" => "mystuff"
+        ),
+    ),
+));
 
-$document = ['key' => 'value'];
+$app->register(new DoctrineMongoDbOdmProvider, array(
+    "mongodbodm.dm.options" => array(
+        "database" => "mystuff",
+        "mappings" => array(
+            // Using actual filesystem paths
+            array(
+                "type" => "annotation",
+                "namespace" => "MyStuff",
+                "path" => __DIR__."../src/MyStuff",
+            )
+        ),
+    ),
+));
 
-$app['mongodb']
-    ->mydatabase
-    ->mycollection
-    ->insert($document)
-;
+Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver::registerAnnotationClasses();
 
-$app->get('/', function () {
-    phpinfo();
+$app->get('/', function() use ($app) {
+
+    $dm = $app['mongodbodm.dm'];
+
+    $post = new \MyStuff\Entities\Posts();
+    $post->setTitle('Meu segundo post');
+    $post->setDescription('Adicionei meu segundo post');
+
+    $dm->persist($post);
+
+    $dm->flush();
+
+
+    return "Ola mundo";
 });
 
 $app->run();
