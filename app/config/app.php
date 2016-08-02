@@ -39,7 +39,7 @@ $app->register(new DoctrineMongoDbOdmProvider, array(
 
 Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver::registerAnnotationClasses();
 
-$app->get('/', function() use ($app) {
+/*$app->get('/', function() use ($app) {
     $dm = $app['mongodbodm.dm'];
 
     $post = new \MyStuff\Entities\Posts();
@@ -51,6 +51,6 @@ $app->get('/', function() use ($app) {
     $dm->flush();
 
     return "Ola mundo";
-});
+});*/
 
 return $app;

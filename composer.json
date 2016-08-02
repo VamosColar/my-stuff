@@ -1,24 +1,25 @@
 {
-    "require": {
-        "silex/silex": "~2.0",
-        "alcaeus/mongo-php-adapter": "^1.0",
-        "doctrine/mongodb-odm": "^1.1",
-        "symfony/yaml": "^3.1",
-        "doctrine/dbal": "~2.2",
-        "saxulum/saxulum-doctrine-mongodb-odm-provider": "^2.1",
-        "phpunit/phpunit": "^5.4"
-    },
-    "require-dev": {
-      "symfony/var-dumper": "dev-master"
-    },
-    "autoload": {
-      "psr-4": {
-        "MyStuff\\": "src/MyStuff/"
-      }
-    },
-    "autoload-dev": {
-      "classmap": [
-        "tests/TestCase.php"
-      ]
+  "require": {
+    "silex/silex": "~2.0",
+    "alcaeus/mongo-php-adapter": "^1.0",
+    "doctrine/mongodb-odm": "^1.1",
+    "symfony/yaml": "^3.1",
+    "doctrine/dbal": "~2.2",
+    "saxulum/saxulum-doctrine-mongodb-odm-provider": "^2.1"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "dev-master",
+    "mockery/mockery": "^0.9.5",
+    "phpunit/phpunit": "^5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "MyStuff\\": "src/MyStuff/"
     }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/TestCase.php"
+    ]
+  }
 }
