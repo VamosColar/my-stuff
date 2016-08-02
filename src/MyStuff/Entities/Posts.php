@@ -1,12 +1,13 @@
-<?php namespace MyStuff\Entities;
+<?php
+declare(strict_types = 1);
+
+namespace MyStuff\Entities;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-
 
 /** @ODM\Document(collection="posts") */
 class Posts
 {
-
     /** @ODM\Id */
     private $id;
 
@@ -40,8 +41,6 @@ class Posts
         return $this->description;
     }
 
-
-
     public function setTitle($title)
     {
         $this->title = $title;
@@ -52,4 +51,3 @@ class Posts
         $this->description = $description;
     }
 }
-

@@ -1,11 +1,13 @@
-<?php namespace MyStuff\Entities;
+<?php
+declare(strict_types = 1);
+
+namespace MyStuff\Entities;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /** @ODM\Document */
 class Usuario
 {
-
     /** @ODM\Id */
     private $id;
 
@@ -39,8 +41,6 @@ class Usuario
         return $this->email;
     }
 
-
-
     public function setName($name)
     {
         $this->name = $name;
@@ -51,4 +51,3 @@ class Usuario
         $this->email = $email;
     }
 }
-
