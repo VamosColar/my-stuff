@@ -42,7 +42,7 @@ Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver::registerAnnotationClasses(
 $app->get('/', function() use ($app) {
     $dm = $app['mongodbodm.dm'];
 
-    $post = new \MyStuff\Entities\Posts();
+    $post = new \MyStuff\Domain\Entitie\Posts();
     $post->setTitle('Meu segundo post');
     $post->setDescription('Adicionei meu segundo post');
 

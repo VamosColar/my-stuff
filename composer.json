@@ -14,7 +14,7 @@
   },
   "autoload": {
     "psr-4": {
-      "MyStuff\\": "src/MyStuff/"
+      "MyStuff\\": "src/"
     }
   },
   "autoload-dev": {

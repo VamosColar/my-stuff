@@ -1,9 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace MyStuff\Entities;
+namespace MyStuff\Domain\Entitie;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use MyStuff\Application;
 
 /** @ODM\Document(collection="posts") */
 class Posts
@@ -43,6 +44,8 @@ class Posts
 
     public function setTitle($title)
     {
+        $app = new Application([]);
+        var_dump($app);exit;
         $this->title = $title;
     }
 

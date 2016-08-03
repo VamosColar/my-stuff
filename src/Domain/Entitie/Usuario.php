@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace MyStuff\Entities;
+namespace MyStuff\Domain\Entitie;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
