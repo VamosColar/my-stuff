@@ -1,18 +1,18 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace MyStuff;
+
 use Saxulum\DoctrineMongoDb\Provider\DoctrineMongoDbProvider;
 use Saxulum\DoctrineMongoDbOdm\Provider\DoctrineMongoDbOdmProvider;
+use \Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
 use \Silex\Application as SilexApplication;
 
 class Application extends SilexApplication
 {
 
-    public function __construct(array $values)
+    public function __construct()
     {
-        parent::__construct($values);
+        parent::__construct([]);
 
         $this->register(new DoctrineMongoDbProvider(), array(
             "mongodb.options" => array(
@@ -38,6 +38,8 @@ class Application extends SilexApplication
                 ),
             ),
         ));
+
+        AnnotationDriver::registerAnnotationClasses();
 
         $this['db'] = $this['mongodbodm.dm'];
 

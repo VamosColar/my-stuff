@@ -6,7 +6,7 @@ namespace MyStuff\Domain\Entitie;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /** @ODM\Document */
-class Usuario
+class Usuario implements EntitieInterface
 {
     /** @ODM\Id */
     private $id;

@@ -44,9 +44,9 @@ class Posts
 
     public function setTitle($title)
     {
-        $app = new Application([]);
-        var_dump($app);exit;
         $this->title = $title;
+
+        return $this;
     }
 
     public function setDescription($description)
