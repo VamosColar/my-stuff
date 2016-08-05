@@ -45,7 +45,7 @@ class Posts
     public function setTitle($title)
     {
         $app = new Application([]);
-        var_dump($app);exit;
+        // var_dump($app);exit;
         $this->title = $title;
     }
 
