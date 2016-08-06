@@ -18,7 +18,10 @@ class RepositoryUsuarioTest extends \PHPUnit_Framework_TestCase
 
         $input = [
             'nome' => 'Ediaimo Borges',
-            'email' => 'edyonil@gmail.com'
+            'email' => 'edyonil@gmail.com',
+            'nomeUsuario' => 'edyonil',
+            'senha' => '123456SD',
+            'apelido' => 'edyonil'
         ];
 
         $repositorio->save($input);

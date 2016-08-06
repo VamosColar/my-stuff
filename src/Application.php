@@ -2,6 +2,7 @@
 
 namespace MyStuff;
 
+use MyStuff\Provider\ConfigProvider;
 use Saxulum\DoctrineMongoDb\Provider\DoctrineMongoDbProvider;
 use Saxulum\DoctrineMongoDbOdm\Provider\DoctrineMongoDbOdmProvider;
 use \Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
@@ -39,10 +40,17 @@ class Application extends SilexApplication
             ),
         ));
 
+        $this->register(new ConfigProvider());
+
         AnnotationDriver::registerAnnotationClasses();
 
         $this['db'] = $this['mongodbodm.dm'];
 
+    }
+
+    public function rootPath()
+    {
+        return __DIR__ .'../';
     }
 
 }

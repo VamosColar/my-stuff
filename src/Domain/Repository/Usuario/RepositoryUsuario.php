@@ -32,8 +32,13 @@ class RepositoryUsuario extends RepositoryAbstract
 
     public function save(array $input)
     {
-        $this->usuario->setName($input['nome']);
-        $this->usuario->setEmail($input['email']);
+        $this->usuario
+             ->setNome($input['nome'])
+             ->setEmail($input['email'])
+             ->setNomeUsuario($input['nomeUsuario'])
+             ->setApelido($input['apelido'])
+             ->setSenha($input['senha']);
+
         $this->persist();
         $this->flush();
 
