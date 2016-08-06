@@ -8,10 +8,8 @@
 
 class RepositoryUsuarioTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testCadatroDeUsuarioComRepository()
     {
-
         $usuario = new \MyStuff\Domain\Entitie\Usuario();
 
         $repositorio = new \MyStuff\Domain\Repository\Usuario\RepositoryUsuario($usuario);
@@ -29,8 +27,5 @@ class RepositoryUsuarioTest extends \PHPUnit_Framework_TestCase
         $objeto = $repositorio->flush();
 
         $this->assertEquals($input['nome'], $objeto->getNome());
-
-
     }
-
 }

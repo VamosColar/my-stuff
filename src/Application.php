@@ -1,4 +1,5 @@
-<?php declare(strict_types = 1);
+<?php
+declare(strict_types = 1);
 
 namespace MyStuff;
 
@@ -10,7 +11,6 @@ use \Silex\Application as SilexApplication;
 
 class Application extends SilexApplication
 {
-
     public function __construct()
     {
         parent::__construct([]);
@@ -45,15 +45,10 @@ class Application extends SilexApplication
         AnnotationDriver::registerAnnotationClasses();
 
         $this['db'] = $this['mongodbodm.dm'];
-
     }
 
     public function rootPath()
     {
         return __DIR__ .'../';
     }
-
 }
-
-
-
