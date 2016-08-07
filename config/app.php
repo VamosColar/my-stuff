@@ -41,4 +41,6 @@ return [
 
     'url' => 'http://localhost',
 
+    'secret_key' => 'estradavelhadoareporto'
+
 ];

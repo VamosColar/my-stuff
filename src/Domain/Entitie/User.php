@@ -6,7 +6,7 @@ namespace MyStuff\Domain\Entitie;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /** @ODM\Document(collection="usuario") */
-class Usuario implements EntitieInterface
+class User implements EntitieInterface
 {
 
     /** @ODM\Id */
@@ -18,8 +18,8 @@ class Usuario implements EntitieInterface
     /** @ODM\Field(type="string") */
     private $email;
 
-    /** @ODM\Field(type="string") */
-    private $nome_usuario;
+    /** @ODM\Field(type="string", name="nome_usuario") */
+    private $nomeUsuario;
 
     /** @ODM\Field(type="string") */
     private $senha;
@@ -81,15 +81,15 @@ class Usuario implements EntitieInterface
      */
     public function getNomeUsuario()
     {
-        return $this->nome_usuario;
+        return $this->nomeUsuario;
     }
 
     /**
      * @param mixed $nome_usuario
      */
-    public function setNomeUsuario($nome_usuario)
+    public function setNomeUsuario($nomeUsuario)
     {
-        $this->nome_usuario = $nome_usuario;
+        $this->nomeUsuario = $nomeUsuario;
 
         return $this;
     }

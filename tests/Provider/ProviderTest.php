@@ -4,6 +4,9 @@
  * Class ProviderTest
  * @group provider
  */
+
+use MyStuff\Service\Config;
+
 class ProviderTest extends TestCase
 {
 
@@ -18,9 +21,7 @@ class ProviderTest extends TestCase
     public function testVerificaObjetosIguaisTantoDoProviderQuandoInstanciado()
     {
 
-
-
-        $config = new \MyStuff\Config\Config(__DIR__);
+        $config = new Config(__DIR__);
 
         $configApp = $this->app['config'];
 
