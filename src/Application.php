@@ -1,7 +1,9 @@
-<?php declare(strict_types = 1);
+<?php
+declare(strict_types = 1);
 
 namespace MyStuff;
 
+use MyStuff\Provider\ConfigProvider;
 use Saxulum\DoctrineMongoDb\Provider\DoctrineMongoDbProvider;
 use Saxulum\DoctrineMongoDbOdm\Provider\DoctrineMongoDbOdmProvider;
 use \Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
@@ -9,7 +11,6 @@ use \Silex\Application as SilexApplication;
 
 class Application extends SilexApplication
 {
-
     public function __construct()
     {
         parent::__construct([]);
@@ -39,13 +40,15 @@ class Application extends SilexApplication
             ),
         ));
 
+        $this->register(new ConfigProvider());
+
         AnnotationDriver::registerAnnotationClasses();
 
         $this['db'] = $this['mongodbodm.dm'];
-
     }
 
+    public function rootPath()
+    {
+        return __DIR__ .'../';
+    }
 }
-
-
-
