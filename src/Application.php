@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace MyStuff;
 
 use MyStuff\Provider\ConfigProvider;
+use MyStuff\Provider\CryptProvider;
 use Saxulum\DoctrineMongoDb\Provider\DoctrineMongoDbProvider;
 use Saxulum\DoctrineMongoDbOdm\Provider\DoctrineMongoDbOdmProvider;
 use \Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
@@ -41,6 +42,8 @@ class Application extends SilexApplication
         ));
 
         $this->register(new ConfigProvider());
+
+        $this->register(new CryptProvider());
 
         AnnotationDriver::registerAnnotationClasses();
 

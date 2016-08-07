@@ -7,7 +7,7 @@
  * Time: 17:00
  */
 
-use MyStuff\Config\Config;
+use MyStuff\Service\Config;
 
 class ConfigTest extends TestCase
 {

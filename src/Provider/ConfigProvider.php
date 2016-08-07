@@ -9,7 +9,7 @@
 namespace MyStuff\Provider;
 
 
-use MyStuff\Config\Config;
+use MyStuff\Service\Config;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

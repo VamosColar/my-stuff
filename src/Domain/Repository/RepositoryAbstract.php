@@ -22,9 +22,9 @@ abstract class RepositoryAbstract
 
     }
 
-    public function persist()
+    public function persist(EntitieInterface $entitieInterface)
     {
-        $this->connection->persist($this->entitie);
+        $this->connection->persist($entitieInterface);
 
     }
 
@@ -33,6 +33,11 @@ abstract class RepositoryAbstract
         $this->connection->flush();
 
         return $this->entitie;
+    }
+
+    public function getConnection()
+    {
+        return $this->connection;
     }
 
 }
