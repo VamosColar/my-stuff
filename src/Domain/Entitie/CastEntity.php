@@ -6,16 +6,13 @@ namespace MyStuff\Domain\Entitie;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /** @ODM\Document(collection="cast") */
-class CastEntity implements EntitieInterface
+class CastEntity implements EntityInterface
 {
     /** @ODM\Id */
     private $id;
 
     /** @ODM\Field(type="string") */
     private $nome;
-
-    /** @ODM\Field(type="string", name="data_nascimento") */
-    private $dataNascimento;
 
     /**
      * @return mixed
@@ -40,25 +37,6 @@ class CastEntity implements EntitieInterface
     public function setNome($nome)
     {
         $this->nome = $nome;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDataNascimento()
-    {
-        return $this->dataNascimento;
-    }
-
-    /**
-     * @param $dataNascimento
-     * @return $this
-     */
-    public function setDataNascimento($dataNascimento)
-    {
-        $this->dataNascimento = $dataNascimento;
 
         return $this;
     }

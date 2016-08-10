@@ -3,8 +3,6 @@ declare(strict_types = 1);
 
 namespace MyStuff\Domain\Repository;
 
-use MyStuff\Domain\Entitie\CastEntity;
-use MyStuff\Domain\Entitie\GenreEntity;
 use MyStuff\Domain\Entitie\MovieEntity;
 
 /**
@@ -21,13 +19,13 @@ class MovieRepository extends RepositoryAbstract
 
     /**
      * MovieRepository constructor.
-     * @param MovieEntity $entitie
+     * @param MovieEntity $entity
      */
-    public function __construct(MovieEntity $entitie)
+    public function __construct(MovieEntity $entity)
     {
-        $this->movie = $entitie;
+        $this->movie = $entity;
 
-        parent::__construct($entitie);
+        parent::__construct($entity);
     }
 
     /**
@@ -48,37 +46,82 @@ class MovieRepository extends RepositoryAbstract
         $this->persist($this->movie);
 
         // Gênero
-        $generos = [];
-
-        foreach ($input['genero'] as $g) {
-            $genero = new GenreEntity();
-            $genero->setDescricao($g);
-
-            $generos[] = $genero;
-        }
-
-        $this->movie->setGenero($generos);
+        $this->movie->setGenero($input['genero']);
 
         // Elenco
-        $elenco = [];
-
-        foreach ($input['atores'] as $a) {
-            $ator = new CastEntity();
-            $ator->setNome($a);
-
-            $elenco[] = $ator;
-        }
-
-        $this->movie->setElenco($elenco);
+        $this->movie->setElenco($input['elenco']);
 
         // Diretor
-        $diretor = new CastEntity();
-        $diretor->setNome($input['diretor']);
-
-        $this->movie->setDiretor([$diretor]);
+        $this->movie->setDiretor($input['diretor']);
 
         $this->flush();
 
         return $this->movie;
+    }
+
+    /**
+     * @param string $id
+     * @return mixed
+     */
+    public function find(string $id)
+    {
+        return $this->getConnection()->find(get_class($this->movie), $id);
+    }
+
+    /**
+     * @param string $id
+     * @param array $input
+     * @return mixed|MovieEntity
+     */
+    public function update(string $id, array $input)
+    {
+        $this->movie = $this->find($id);
+
+        $this->movie
+            ->setAno($input['ano'])
+            ->setCapa($input['capa'])
+            ->setTitulo($input['titulo'])
+            ->setTituloOriginal($input['tituloOriginal'])
+            ->setDono($input['dono'])
+            ->setDuracao($input['duracao'])
+            ->setSinopse($input['sinopse']);
+
+        $this->persist($this->movie);
+
+        // Gênero
+        $this->movie->setGenero($input['genero']);
+
+        // Elenco
+        $this->movie->setElenco($input['elenco']);
+
+        // Diretor
+        $this->movie->setDiretor($input['diretor']);
+
+        $this->flush();
+
+        return $this->movie;
+    }
+
+    /**
+     * @param string $id
+     * @return bool
+     */
+    public function remove(string $id)
+    {
+        $movie = $this->find($id);
+
+        $this->getConnection()->remove($movie);
+
+        $this->flush();
+
+        return true;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuery()
+    {
+        return $this->getConnection()->getRepository(get_class($this->movie));
     }
 }

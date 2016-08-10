@@ -6,7 +6,7 @@ namespace MyStuff\Domain\Entitie;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /** @ODM\Document(collection="media") */
-abstract class MediaEntity implements EntitieInterface
+abstract class MediaEntity implements EntityInterface
 {
     /** @ODM\Id */
     private $id;
@@ -29,8 +29,8 @@ abstract class MediaEntity implements EntitieInterface
     /** @ODM\Field(type="integer") */
     private $ano;
 
-    /** @ODM\Field(type="string") */
-    private $dono;
+    /** @ODM\ReferenceMany(targetDocument="User", cascade="all") */
+    private $dono = [];
 
     /**
      * @return mixed
@@ -172,24 +172,4 @@ abstract class MediaEntity implements EntitieInterface
 
         return $this;
     }
-
-    /**
-     * @return mixed
-     */
-    public abstract function add();
-
-    /**
-     * @return mixed
-     */
-    public abstract function remove();
-
-    /**
-     * @return mixed
-     */
-    public abstract function update();
-
-    /**
-     * @return mixed
-     */
-    public abstract function list();
 }

@@ -11,10 +11,10 @@ class MovieEntity extends MediaEntity
     /** @ODM\Field(type="string") */
     private $duracao;
 
-    /** @ODM\ReferenceMany(targetDocument="CastEntity", cascade="all") */
+    /** @ODM\ReferenceMany(targetDocument="ActorEntity", cascade="all") */
     private $elenco = [];
 
-    /** @ODM\ReferenceMany(targetDocument="CastEntity", cascade="all") */
+    /** @ODM\ReferenceMany(targetDocument="DirectorEntity", cascade="all") */
     private $diretor = [];
 
     /**
@@ -72,25 +72,5 @@ class MovieEntity extends MediaEntity
         $this->diretor = $diretor;
 
         return $this;
-    }
-
-    public function add()
-    {
-        // TODO: Implement add() method.
-    }
-
-    public function remove()
-    {
-        // TODO: Implement remove() method.
-    }
-
-    public function update()
-    {
-        // TODO: Implement update() method.
-    }
-
-    public function list()
-    {
-        // TODO: Implement list() method.
     }
 }
