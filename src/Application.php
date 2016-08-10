@@ -18,12 +18,12 @@ class Application extends SilexApplication
 
         $this->register(new DoctrineMongoDbProvider(), array(
             "mongodb.options" => array(
-                "server" => "mongodb://localhost:27017",
-                "options" => array(
+                "server" => "mongodb://homestead:secret@localhost:27017/mystuff",
+                /*"options" => array(
                     "username" => "homestead",
                     "password" => "secret",
                     "db" => "mystuff"
-                ),
+                ),*/
             ),
         ));
 

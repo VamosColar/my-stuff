@@ -21,7 +21,8 @@ class UserRepository extends RepositoryAbstract
 
     /**
      * RepositoryUsuario constructor.
-     * @param Usuario $usuario
+     * @param User $user
+     * @internal param Usuario $usuario
      */
     public function __construct(User $user)
     {
@@ -80,8 +81,15 @@ class UserRepository extends RepositoryAbstract
         $user = $this->find($id);
 
         $this->getConnection()->remove($user);
+
         $this->flush();
+
         return true;
+    }
+
+    public function getQuery()
+    {
+        return $this->getConnection()->getRepository(get_class($this->user));
     }
 
 

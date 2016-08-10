@@ -3,7 +3,7 @@
 namespace MyStuff\Domain\Repository;
 
 use MyStuff\Application;
-use MyStuff\Domain\Entitie\EntitieInterface;
+use MyStuff\Domain\Entitie\EntityInterface;
 
 abstract class RepositoryAbstract
 {
@@ -12,7 +12,7 @@ abstract class RepositoryAbstract
 
     protected $entitie;
 
-    public function __construct(EntitieInterface $entitie)
+    public function __construct(EntityInterface $entitie)
     {
         $app = new Application();
 
@@ -22,7 +22,7 @@ abstract class RepositoryAbstract
 
     }
 
-    public function persist(EntitieInterface $entitieInterface)
+    public function persist(EntityInterface $entitieInterface)
     {
         $this->connection->persist($entitieInterface);
 
